@@ -52,20 +52,20 @@ function() {
 		    var editor = view.getHtmlEditor();
 		    //editor.focus();
 		    var editorContent =  editor.getContent();
-		    var isHtml = view && view.getComposeMode() === DwtHtmlEditor.HTML;
+		    var isHtml = view && view.getComposeMode().match(/html/gi); // var isHtml = view && view.getComposeMode() === DwtHtmlEditor.HTML;
 		    if (isHtml) {
                 var endId = tinymce.DOM.uniqueId();
 
-			    var div = '<table style="background-color:rgb(245, 245, 245); padding:10px 14px; margin-right:10px; color:rgb(34, 34, 34); '; 
+
+			    var div = '<div style="background-color:rgb(245, 245, 245); padding:10px 14px; margin-right:10px; color:rgb(34, 34, 34); '; 
                 div+='font-family:arial; font-style:normal; font-weight:bold; font-size:13px; cursor:default; border:1px solid rgb(221, 221, 221); float:left;">';
-                div+='<tbody><tr><td>';
 				div+='<a href="' + file.alternateLink + '" target="_blank"><img style="padding-bottom:7px; border:none;" width="64" height="64" src="' + file.thumbnailLink + '"></a>';
 				div+='<div dir="ltr" title="' + file.title + '" style="color:rgb(17, 85, 204); text-decoration:initial; vertical-align:bottom;">';
 			    div+='<a href="' + file.alternateLink + '" target="_blank" style=" display:inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-decoration:none; text-align:center; cursor:pointer;padding:1px 0; border:none; max-width:200px;">' + file.title + '</div></a>';
-				div+='</div></td></tbody></table><span id="' + endId + '">&nbsp;</span>';
+				div+='</div><div style="clear:both"><br/></div><span id="' + endId + '">&nbsp;</span>';
   
 			    var ed = editor.getEditor();
-			    editor.restoreFocus(ed);
+			    //editor.restoreFocus(ed);
 
 			    //tinymce modifies the source when using mceInsertContent
 			    //ed.execCommand('mceInsertContent', false, html.join(""), {skip_undo : 1});
